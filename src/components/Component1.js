@@ -1,7 +1,7 @@
-
 import React,{Component} from 'react';
+import Component3 from "./Component3";
 
-export default class Component1 extends Component {
+ class Component1 extends Component {
     render() {
         return (
             <div className="component1">
@@ -10,3 +10,4 @@ export default class Component1 extends Component {
         );
     }
 }
+export default  Component1;
