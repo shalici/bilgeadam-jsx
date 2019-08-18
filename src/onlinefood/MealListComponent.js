@@ -1,5 +1,6 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 class MealList extends Component {
@@ -44,6 +45,11 @@ class MealList extends Component {
                         }
                         </tbody>
                     </table>
+                    <div>
+                        <button className="btn btn-success navbar-brand" color="#00000"><Link to="/createmeal">Ekle</Link></button>
+                        <button className="btn btn-success navbar-brand"><Link to="/updatemeal">Güncelle</Link></button>
+                        <button className="btn btn-success navbar-brand"><Link to="/deletemeal">Sil</Link></button>
+                    </div>
                 </div>
             </div>
         )
