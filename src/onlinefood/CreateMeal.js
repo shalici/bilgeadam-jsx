@@ -51,12 +51,9 @@ class CreateMeal extends Component {
 
     CreateList = (event) => {
             if (this.state.name !== null && this.state.price !== null && this.detail !== null) {
-                this.setState({name:this.state});
-                this.setState({price:this.state});
-                this.setState({photo:this.state});
-                this.setState({detail:this.state});
+            console.log("kayıt eklendi")
             } else {
-
+            console.log("kayıt eklenemedi.")
             }
     }
     handleChange = (event) => {

@@ -1,5 +1,4 @@
     import React, {Component} from 'react';
-    import {withRouter} from 'react-dom';
 
     class DeleteMeal extends Component {
         constructor() {
