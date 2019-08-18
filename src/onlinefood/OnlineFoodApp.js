@@ -18,9 +18,11 @@ class OnlineFoodApp extends Component {
                             <Route path="/login" component={LoginComponent}/>
                             <Route path="/welcome/:name" component={WelcoemComponent}/>
                             <Route path="/meallist" component={MealList}/>
+                            <Route path="/logout" component={LogoutComponent}/>
                             <Route component={ErrorComponent}/>
                         </Switch>
-                    <FooterComponent/>
+
+                        <FooterComponent/>
                     </>
                 </Router>
             </div>
@@ -42,14 +44,18 @@ class LoginComponent extends Component {
     render() {
         return (
             <div className="login">
-                User Name: <input type="text" name="username" value={this.state.username}
-                                  onChange={this.handleChange}/>
-                Password: <input type="password" name="password" value={this.state.password}
-                                 onChange={this.handleChange}/>
+                <h1>Login</h1>
+                <div className="container">
+                    User Name: <input type="text" name="username" value={this.state.username}
+                                      onChange={this.handleChange}/>
+                    Password: <input type="password" name="password" value={this.state.password}
+                                     onChange={this.handleChange}/>
 
-                {this.state.isLoggedIn && <div>Başarılı Giriş</div>}
-                {this.state.isLoggedIn != null && !this.state.isLoggedIn && <div>Kullanıcı veya şifre hatalı!</div>}
-                <button onClick={this.loginClicked}>Login</button>
+                    {this.state.isLoggedIn && <div>Başarılı Giriş</div>}
+                    {this.state.isLoggedIn != null && !this.state.isLoggedIn &&
+                    <div className="alert alert-warning">Kullanıcı veya şifre hatalı!</div>}
+                    <button className="btn btn-success" onClick={this.loginClicked}>Login</button>
+                </div>
             </div>
         )
     }
@@ -154,12 +160,12 @@ class HeaderComponent extends Component{
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark">
                     <div><a href="http://localhost:3000" className="navbar-brand"> Online Foot App</a></div>
                     <ul className="navbar-nav">
-                        <li><Link className="nav-link" to="/welcome:sehoffice">Home</Link></li>
+                        <li><Link className="nav-link" to="/welcome/sehoffice">Home</Link></li>
                         <li><Link className="nav-link" to="/meallist">Meals</Link></li>
                     </ul>
                     <ul className="navbar-nav navbar-collapse justify-content-end">
                         <li><Link  className="nav-link" to="/login">Login</Link></li>
-                        <li className="nav-link">Logout</li>
+                        <li><Link className="nav-link" to="/logout">Logout</Link></li>
                     </ul>
                 </nav>
             </header>
@@ -170,13 +176,25 @@ class HeaderComponent extends Component{
     }
 }
 
+class LogoutComponent extends Component{
+    render() {
+        return (
+            <div>
+                <h1>You are logged out!</h1>
+                <div className="container">
+                    Thank you for using Online Food App!
+                </div>
+            </div>
+        );
+    }
+}
+
 class FooterComponent extends Component{
     render() {
         return(
-            <div>
-                FOOTER <hr/>
-            </div>
-
+            <footer className="footer">
+                <span className="text-muted">All rights reserved 2019 - Online Food App - Created By SEHOFFICE</span>
+            </footer>
         )
     }
 
