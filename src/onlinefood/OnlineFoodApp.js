@@ -12,6 +12,8 @@ import MealListComponent from './MealListComponent';
 import CreateMeal from './CreateMeal';
 import DeleteMeal from "./DeleteMeal";
 import UpdateMeal from "./UpdateMeal";
+import ForgetPasswordComponent from "./ForgetPasswordComponent";
+import SignUpComponent from "./SignUpComponent";
 
 
 class OnlineFoodApp extends Component {
@@ -29,10 +31,12 @@ class OnlineFoodApp extends Component {
                             <Route path="/welcome/:name" component={WelcomeComponent}/>
                             <AuthenticatedRoute path="/meallist" component={MealListComponent}/>
                             <Route path="/logout" component={LogoutComopnent}/>
+                            <Route path="/logout" component={LogoutComopnent}/>
                             <AuthenticatedRoute path="/createmeal" component={CreateMeal}/>
                             <AuthenticatedRoute path="/deletemeal" component={DeleteMeal}/>
                             <AuthenticatedRoute path="/updatemeal" component={UpdateMeal}/>
-
+                            <AuthenticatedRoute path="/forgetpassword" component={ForgetPasswordComponent}/>
+                            <Route path="/signup" component={SignUpComponent}/>
                             <Route component={ErrorComponent}/>
                         </Switch>
                         <FooterComponent/>

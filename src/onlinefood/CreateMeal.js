@@ -23,21 +23,12 @@ class CreateMeal extends Component {
                             <table>
                                 Name: <input type="text" name="name" value={this.state.name}
                                              onChange={this.handleChange}/>
-                                             <br/>
-                                             <br/>
-                                             <br/>
-                              <div className="text">  Price: <input type="text" name="price" value={this.state.price}
-                                                   onChange={this.handleChange}/></div>
-                                              <br/>
-                                              <br/>
-                                              <br/>
-                                <div className="text">Photo: <input type="text" name="photo" value={this.state.photo}
-                                                   onChange={this.handleChange}/></div>
-                                              <br/>
-                                              <br/>
-                                              <br/>
-                                <div className="text"> Detail <input type="textarea" name="detail" value={this.state.detail}
-                                                                     onChange={this.handleChange}/></div>
+                              Price: <input type="text" name="price" value={this.state.price}
+                                                   onChange={this.handleChange}/>
+                              Photo: <input type="text" name="photo" value={this.state.photo}
+                                                   onChange={this.handleChange}/>
+                                Detail <input type="textarea" name="detail" value={this.state.detail}
+                                                                     onChange={this.handleChange}/>
                             </table>
 
                         </div>

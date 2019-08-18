@@ -1,19 +1,19 @@
+import React, {Component} from 'react';
 import AuthenticationService from "./AuthenticationService";
-import React,{Component} from 'react';
-import {Link} from "react-router-dom";
-class LoginComponent extends Component {
+
+class SignUpComponent extends Component {
     constructor() {
         super();
         this.state = {
-            username: "sehoffice",
-            password: "deneme",
+            username: null,
+            password: null,
             isLoggedIn: null
         }
     }
 
     render() {
         return (
-            <div className="login">
+            <div className="sign">
                 <h1>Login</h1>
                 <div className="container">
                     User Name: <input type="text" name="username" value={this.state.username}
@@ -21,23 +21,20 @@ class LoginComponent extends Component {
                     Password: <input type="password" name="password" value={this.state.password}
                                      onChange={this.handleChange}/>
 
-                    {this.state.isLoggedIn && <div>Başarılı Giriş</div>}
+                    {this.state.isLoggedIn && <div>Başarılı Kayıt</div>}
                     {this.state.isLoggedIn != null && !this.state.isLoggedIn &&
-                    <div className="alert alert-warning">Kullanıcı veya şifre hatalı!</div>}
-                    <button className="btn btn-success" onClick={this.loginClicked}>Login</button>
-                    <button className="btn btn-success navbar-brand"><Link to="/signup">Kayıt Ol</Link></button>
-
-                    <div className="App-link"><Link to="/forgetpassword">Şifremi Unuttum?</Link></div>
+                    <div className="alert alert-warning">Kullanıcı veya şifre mevcut!</div>}
+                    <button className="btn btn-success" onClick={this.loginClicked}>Kayıt Ol</button>
                 </div>
             </div>
         )
     }
 
-    loginClicked = (event) => {
-        if (this.state.username === 'sehoffice' && this.state.password === 'deneme') {
+    signClicked = (event) => {
+        if (this.state.username !== 'sehoffice' && this.state.password !== 'deneme') {
             console.log("SUCCESFULL");
             // this.setState({isLoggedIn: true});
-            this.props.history.push(`/welcome/${this.state.username}`);
+            this.props.history.push(`/login`);
             AuthenticationService.registerSuccessfullLogin(this.state.username,this.state.password);
         } else {
             console.log("ACCESS DENIED");
@@ -62,4 +59,4 @@ class LoginComponent extends Component {
 //
 //}
 
-export default LoginComponent;
+export default SignUpComponent;
