@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 //import logo from './logo.svg';
-
+import './bootstrap.css';
 import './App.css';
 import OnlineFoodApp from "./onlinefood/OnlineFoodApp";
 

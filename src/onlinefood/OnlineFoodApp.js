@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 //import logo from './logo.svg';
-
+import {BrowserRouter as Router, Route, Switch,Link,} from "react-router-dom";
 
 
 
@@ -8,8 +8,21 @@ class OnlineFoodApp extends Component {
     render() {
         return (
             <div className="onlineFoodApp">
-            Online Food App
-                <LoginComponent/>
+
+                <Router>
+                    <>
+                        <HeaderComponent/>
+                       <br/>
+                        <Switch>
+                            <Route path="/" exact component={LoginComponent}/>
+                            <Route path="/login" component={LoginComponent}/>
+                            <Route path="/welcome/:name" component={WelcoemComponent}/>
+                            <Route path="/meallist" component={MealList}/>
+                            <Route component={ErrorComponent}/>
+                        </Switch>
+                    <FooterComponent/>
+                    </>
+                </Router>
             </div>
         );
     }
@@ -35,7 +48,7 @@ class LoginComponent extends Component {
                                  onChange={this.handleChange}/>
 
                 {this.state.isLoggedIn && <div>Başarılı Giriş</div>}
-                {this.state.isLoggedIn != null && !this.state.isLoggedIn && <div>Kullanıcı veya şifre hatalı!</div> }
+                {this.state.isLoggedIn != null && !this.state.isLoggedIn && <div>Kullanıcı veya şifre hatalı!</div>}
                 <button onClick={this.loginClicked}>Login</button>
             </div>
         )
@@ -45,6 +58,7 @@ class LoginComponent extends Component {
         if (this.state.username === 'sehoffice' && this.state.password === 'deneme') {
             console.log("SUCCESFULL");
             this.setState({isLoggedIn: true});
+            this.props.history.push(`/welcome/${this.state.username}`);
         } else {
             console.log("ACCESS DENIED");
             this.setState({isLoggedIn: false});
@@ -56,6 +70,7 @@ class LoginComponent extends Component {
         this.setState({[event.target.name]: event.target.value})
     }
 }
+
 // function LoginMessage(props){
 //     if(props.isLoggedIn === null)
 //         return null;
@@ -68,6 +83,104 @@ class LoginComponent extends Component {
 //}
 
 
+function ErrorComponent() {
+    return <div>An error occured!</div>
+
+}
+
+
+class WelcoemComponent extends Component {
+    render() {
+        return <div>Welcome {this.props.match.params.name} Online Food App, restaurant meal list is <Link to ="/meallist">here</Link>  </div>
+
+    }
+}
+
+
+class MealList extends Component {
+    constructor() {
+        super();
+        this.state = {
+            //meal : {code: 'MNT1', name: 'Mantı', price: 12, photo: 'text', detail: 'Süper bi yemek!'}
+            meal: [
+                {code: 'MNT1', name: 'Mantı', price: 12, photo: 'text', detail: 'Süper bi yemek!'},
+                {code: 'CRB1', name: 'Çorba', price: 12, photo: 'text', detail: 'Süper bi yemek!'},
+                {code: 'PD1', name: 'Pide', price: 12, photo: 'text', detail: 'Süper bi yemek!'}
+            ]
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>Meal List</h1>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>CODE</th>
+                        <th>NAME</th>
+                        <th>PRICE</th>
+                        <th>PHOTO</th>
+                        <th>DETAIL</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        this.state.meal.map(
+                            meal =>
+                                <tr>
+                                    <td>{meal.code}</td>
+                                    <td>{meal.name}</td>
+                                    <td>{meal.price}</td>
+                                    <td>{meal.photo}</td>
+                                    <td>{meal.detail}</td>
+                                </tr>
+                        )
+
+                    }
+
+
+                    </tbody>
+                </table>
+            </div>
+        )
+    }
+}
+
+class HeaderComponent extends Component{
+    render() {
+        return(
+            <header>
+                <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+                    <div><a href="http://localhost:3000" className="navbar-brand"> Online Foot App</a></div>
+                    <ul className="navbar-nav">
+                        <li><Link className="nav-link" to="/welcome:sehoffice">Home</Link></li>
+                        <li><Link className="nav-link" to="/meallist">Meals</Link></li>
+                    </ul>
+                    <ul className="navbar-nav navbar-collapse justify-content-end">
+                        <li><Link  className="nav-link" to="/login">Login</Link></li>
+                        <li className="nav-link">Logout</li>
+                    </ul>
+                </nav>
+            </header>
+            // <div>
+            //     HEADER <hr/>
+            // </div>
+        )
+    }
+}
+
+class FooterComponent extends Component{
+    render() {
+        return(
+            <div>
+                FOOTER <hr/>
+            </div>
+
+        )
+    }
+
+}
 
 
 export default OnlineFoodApp;
