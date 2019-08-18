@@ -39,9 +39,7 @@ class CreateMeal extends Component {
                                 <div className="text"> Detail <input type="textarea" name="detail" value={this.state.detail}
                                                                      onChange={this.handleChange}/></div>
                             </table>
-                            <table>
-                                <div className="container"><h1>deneme</h1></div>
-                            </table>
+
                         </div>
                     <div>
                     <button className="btn btn-success bg-dark" onClick={this.CreateList}>Ekle</button>
@@ -53,15 +51,17 @@ class CreateMeal extends Component {
 
     CreateList = (event) => {
             if (this.state.name !== null && this.state.price !== null && this.detail !== null) {
-                this.setState(this.state.name);
-                this.setState(this.state.price);
-                this.setState(this.state.photo);
-                this.setState(this.state.detail);
+                this.setState({name:this.state});
+                this.setState({price:this.state});
+                this.setState({photo:this.state});
+                this.setState({detail:this.state});
             } else {
 
             }
     }
-
+    handleChange = (event) => {
+        this.setState({[event.target.name]: event.target.value})
+    }
 
 }
 

@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cc27d2b-668a-40e3-8718-a585b7146a83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/onlinefood/CreateMeal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/onlinefood/DeleteMeal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/onlinefood/UpdateMeal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/onlinefood/MealListComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/onlinefood/MealListComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/onlinefood/OnlineFoodApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/onlinefood/OnlineFoodApp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/onlinefood/CreateMeal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/onlinefood/CreateMeal.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566117092189</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="React">
+      <created>1566154129737</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1566154129737</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
