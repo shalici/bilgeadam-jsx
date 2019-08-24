@@ -3,6 +3,12 @@ import React,{Component} from 'react';
 import HelloWorldService from "../api/HelloWorldService";
 
 class WelcomeComponent extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            welcomeMessage : null,
+        }
+    }
     render() {
         return (
             <>
@@ -18,14 +24,25 @@ class WelcomeComponent extends Component {
                     <button onClick={this.retrieveWelcomeMessage}
                     className="btn btn-success">Get Welcome Message</button>
                 </div>
+
+                <div className="container">
+                    {this.state.welcomeMessage}
+                </div>
+
             </>
         );
     }
 
     retrieveWelcomeMessage = () =>{
         //console.log('message retrieve clicked!');
-        HelloWorldService.executeHelloWorldService();
-}
+        // HelloWorldService.executeHelloWorldService().then(response => this.handleSuccessFullResponse(response));
+        // HelloWorldService.executeHelloWorldServiceBean().then(response => this.handleSuccessFullResponse(response));
+        HelloWorldService.executeHelloWorldServiceBeanPath(this.props.match.params.name).then(response => this.handleSuccessFullResponse(response));
+    }
+    handleSuccessFullResponse = (response) => {
+        this.setState({welcomeMessage:response.data.message});
+    };
+
 }
 
 export default WelcomeComponent;
