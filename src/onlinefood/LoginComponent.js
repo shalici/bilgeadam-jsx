@@ -25,7 +25,7 @@ class LoginComponent extends Component {
                     {this.state.isLoggedIn != null && !this.state.isLoggedIn &&
                     <div className="alert alert-warning">Kullanıcı veya şifre hatalı!</div>}
                     <button className="btn btn-success" onClick={this.loginClicked}>Login</button>
-                    <button className="btn btn-success navbar-brand"><Link to="/signup">Kayıt Ol</Link></button>
+                    <button className="btn btn-success"><Link to="/signup">Kayıt Ol</Link></button>
 
                     <div className="App-link"><Link to="/forgetpassword">Şifremi Unuttum?</Link></div>
                 </div>
@@ -49,6 +49,20 @@ class LoginComponent extends Component {
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value})
     }
+    singClicked = (event) => {
+        if (this.state.username !== 'sehoffice' && this.state.password !== 'deneme') {
+            console.log("SUCCESFULL");
+            // this.setState({isLoggedIn: true});
+            this.props.history.push(`/welcome/${this.state.username}`);
+            AuthenticationService.registerSuccessfullLogin(this.state.username,this.state.password);
+        } else {
+            console.log("ACCESS DENIED");
+            this.setState({isLoggedIn: false});
+        }
+        //console.log(this.state)
+    };
+
+
 }
 
 // function LoginMessage(props){
