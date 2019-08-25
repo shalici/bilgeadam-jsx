@@ -37,8 +37,13 @@ class WelcomeComponent extends Component {
         //console.log('message retrieve clicked!');
         // HelloWorldService.executeHelloWorldService().then(response => this.handleSuccessFullResponse(response));
         // HelloWorldService.executeHelloWorldServiceBean().then(response => this.handleSuccessFullResponse(response));
-        HelloWorldService.executeHelloWorldServiceBeanPath(this.props.match.params.name).then(response => this.handleSuccessFullResponse(response));
-    }
+        HelloWorldService.executeHelloWorldServiceBeanPath(this.props.match.params.name).then(response => this.handleSuccessFullResponse(response))
+            .catch(error => this.handleError(error));
+    };
+    handleError =(error)=>{
+        console.log(error.response);
+        this.setState({welcomeMessage : error.response.data.message})
+    };
     handleSuccessFullResponse = (response) => {
         this.setState({welcomeMessage:response.data.message});
     };
